@@ -1,13 +1,12 @@
 #!/bin/bash
 
-echo "Enter your name:"
+echo -n "Enter your name: "
 read USER_NAME
 
-echo "Enter your age:"
+echo -n "Enter your age: "
 read AGE
 
-echo "Enter your program:"
+echo -n "Enter your program: "
 read PROGRAM
 
-echo ""
-echo "Hello $USER_NAME! Your age is $AGE and your program is $PROGRAM."
+echo -e "\nHello $USER_NAME! Your age is $AGE and your program is $PROGRAM."
