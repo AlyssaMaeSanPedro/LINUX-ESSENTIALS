@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Fetch all history to avoid conflicts
+          fetch-depth: 0  # Fetch all history
           
       - name: Run logging script
         run: |
@@ -24,7 +24,15 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git pull origin main --rebase  # Better handling of conflicts
+          
+          # Add the changed file first
           git add log.txt
+          
+          # Pull changes from remote
+          git pull origin main
+          
+          # Commit the changes
           git commit -m "Update log file with new timestamp" || echo "No changes to commit"
+          
+          # Push to the remote repository
           git push origin main
