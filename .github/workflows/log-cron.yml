@@ -2,7 +2,7 @@ name: Log Time Job
 on:
   push:
     branches:
-      - origin main  # Trigger on push to main branch
+      - main  # Trigger on push to main branch
   schedule:
     - cron: "*/1 * * * *"  # Runs every 1 minute
   
