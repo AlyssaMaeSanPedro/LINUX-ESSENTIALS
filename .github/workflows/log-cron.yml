@@ -1,8 +1,10 @@
 name: Log Time Job
 on:
+  push:
+    branches:
+      - main  # Trigger on push to main branch
   schedule:
-    - cron: "*/5 * * * *"  # Runs every 5 minutes
-  workflow_dispatch:  # Allows manual trigger
+    - cron: "*/1 * * * *"  # Runs every 1 minute
   
 jobs:
   log_time:
