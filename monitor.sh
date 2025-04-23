@@ -14,7 +14,7 @@ create_backup() {
 
     changes_made=false
 
-    git ls-files | while read -r file; do
+    for file in $(git ls-files); do
         # Skip backup folder itself or anything inside it
         if [[ "$file" == "$BACKUP_DIR"* ]]; then
             continue
