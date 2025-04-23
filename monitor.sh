@@ -15,6 +15,11 @@ create_backup() {
     changes_made=false
 
     git ls-files | while read -r file; do
+        # Skip backup folder itself or anything inside it
+        if [[ "$file" == "$BACKUP_DIR"* ]]; then
+            continue
+        fi
+
         [ -f "$file" ] || continue
 
         commit_time=$(git log -1 --format="%ct" -- "$file")
@@ -36,7 +41,6 @@ create_backup() {
         fi
     done
 
-    # After the loop: check if anything was backed up
     if ! $changes_made; then
         echo "No recent file changes."
     fi
