@@ -11,11 +11,8 @@ create_backup() {
     fi
 
     echo -e "\nChecking tracked files for recent commits..."
-
     changes_made=false
-
     for file in $(git ls-files); do
-        # Skip backup folder itself or anything inside it
         if [[ "$file" == "$BACKUP_DIR"* ]]; then
             continue
         fi
@@ -45,5 +42,4 @@ create_backup() {
         echo "No recent file changes."
     fi
 }
-
 create_backup
